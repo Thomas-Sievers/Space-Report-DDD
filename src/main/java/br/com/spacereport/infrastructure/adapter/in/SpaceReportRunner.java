@@ -82,6 +82,9 @@ public class SpaceReportRunner implements CommandLineRunner {
         demoCrud();
 
         log.info("=== Space Report — Demo Complete ===");
+        log.info("H2 Console available at http://localhost:8080/h2-console");
+        log.info("  JDBC URL: jdbc:h2:mem:spacereportdb  |  User: sa  |  Password: (empty)");
+        log.info("Press Ctrl+C to stop the application.");
     }
 
     private void seedDemoData() {
