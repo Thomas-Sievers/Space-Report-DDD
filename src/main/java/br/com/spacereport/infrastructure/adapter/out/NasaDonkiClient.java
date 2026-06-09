@@ -71,6 +71,10 @@ public class NasaDonkiClient {
                     .GET()
                     .build();
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 429) {
+                log.warn("DONKI API rate limit reached (HTTP 429) — skipping fetch, returning empty list");
+                return "[]";
+            }
             if (response.statusCode() != 200) {
                 throw new DonkiApiException("DONKI API returned HTTP " + response.statusCode() + " for " + url);
             }
