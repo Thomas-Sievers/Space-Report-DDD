@@ -2,9 +2,8 @@ package br.com.spacereport.domain.model;
 
 import java.time.LocalDate;
 
-public class SpaceEvent {
+public class SpaceEvent extends DomainEntity {
 
-    private final Long id;
     private final EventType eventType;
     private final String classification;
     private final double intensity;
@@ -13,7 +12,7 @@ public class SpaceEvent {
 
     public SpaceEvent(Long id, EventType eventType, String classification,
                       double intensity, LocalDate eventDate, String description) {
-        this.id = id;
+        super(id);
         this.eventType = eventType;
         this.classification = classification;
         this.intensity = intensity;
@@ -21,7 +20,6 @@ public class SpaceEvent {
         this.description = description;
     }
 
-    public Long getId() { return id; }
     public EventType getEventType() { return eventType; }
     public String getClassification() { return classification; }
     public double getIntensity() { return intensity; }

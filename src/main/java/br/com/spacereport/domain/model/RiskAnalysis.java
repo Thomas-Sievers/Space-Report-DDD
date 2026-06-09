@@ -2,9 +2,8 @@ package br.com.spacereport.domain.model;
 
 import java.time.LocalDate;
 
-public class RiskAnalysis {
+public class RiskAnalysis extends DomainEntity {
 
-    private final Long id;
     private final SpaceEvent spaceEvent;
     private final SpaceAsset spaceAsset;
     private final RiskLevel riskLevel;
@@ -13,7 +12,7 @@ public class RiskAnalysis {
 
     public RiskAnalysis(Long id, SpaceEvent spaceEvent, SpaceAsset spaceAsset,
                         RiskLevel riskLevel, double riskScore, LocalDate analysisDate) {
-        this.id = id;
+        super(id);
         this.spaceEvent = spaceEvent;
         this.spaceAsset = spaceAsset;
         this.riskLevel = riskLevel;
@@ -21,7 +20,6 @@ public class RiskAnalysis {
         this.analysisDate = analysisDate;
     }
 
-    public Long getId() { return id; }
     public SpaceEvent getSpaceEvent() { return spaceEvent; }
     public SpaceAsset getSpaceAsset() { return spaceAsset; }
     public RiskLevel getRiskLevel() { return riskLevel; }

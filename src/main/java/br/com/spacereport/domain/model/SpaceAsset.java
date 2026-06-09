@@ -1,8 +1,7 @@
 package br.com.spacereport.domain.model;
 
-public class SpaceAsset {
+public class SpaceAsset extends DomainEntity {
 
-    private final Long id;
     private final String name;
     private final AssetType assetType;
     private final String orbit;
@@ -11,7 +10,7 @@ public class SpaceAsset {
 
     public SpaceAsset(Long id, String name, AssetType assetType, String orbit,
                       String operationalStatus, Organization organization) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.assetType = assetType;
         this.orbit = orbit;
@@ -19,7 +18,6 @@ public class SpaceAsset {
         this.organization = organization;
     }
 
-    public Long getId() { return id; }
     public String getName() { return name; }
     public AssetType getAssetType() { return assetType; }
     public String getOrbit() { return orbit; }

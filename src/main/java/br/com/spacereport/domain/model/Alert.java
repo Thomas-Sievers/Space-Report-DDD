@@ -2,9 +2,8 @@ package br.com.spacereport.domain.model;
 
 import java.time.LocalDate;
 
-public class Alert {
+public class Alert extends DomainEntity {
 
-    private final Long id;
     private final RiskAnalysis riskAnalysis;
     private final String message;
     private final LocalDate issueDate;
@@ -12,7 +11,7 @@ public class Alert {
 
     public Alert(Long id, RiskAnalysis riskAnalysis, String message,
                  LocalDate issueDate, AlertStatus status) {
-        this.id = id;
+        super(id);
         this.riskAnalysis = riskAnalysis;
         this.message = message;
         this.issueDate = issueDate;
@@ -31,7 +30,6 @@ public class Alert {
         this.status = AlertStatus.SENT;
     }
 
-    public Long getId() { return id; }
     public RiskAnalysis getRiskAnalysis() { return riskAnalysis; }
     public String getMessage() { return message; }
     public LocalDate getIssueDate() { return issueDate; }
