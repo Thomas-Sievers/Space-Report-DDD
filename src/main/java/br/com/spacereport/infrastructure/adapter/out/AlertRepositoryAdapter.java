@@ -30,6 +30,16 @@ public class AlertRepositoryAdapter implements AlertRepository {
     }
 
     @Override
+    public Alert update(Alert alert) {
+        return toDomain(jpaRepository.save(toEntity(alert)));
+    }
+
+    @Override
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<Alert> findById(Long id) {
         return jpaRepository.findById(id).map(this::toDomain);
     }

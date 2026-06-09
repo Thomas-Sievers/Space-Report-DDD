@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface SpaceEventRepository {
     SpaceEvent save(SpaceEvent spaceEvent);
+    SpaceEvent update(SpaceEvent spaceEvent);
+    void delete(Long id);
     Optional<SpaceEvent> findById(Long id);
     List<SpaceEvent> findAll();
 }

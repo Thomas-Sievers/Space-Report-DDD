@@ -25,6 +25,16 @@ public class SpaceEventRepositoryAdapter implements SpaceEventRepository {
     }
 
     @Override
+    public SpaceEvent update(SpaceEvent spaceEvent) {
+        return toDomain(jpaRepository.save(toEntity(spaceEvent)));
+    }
+
+    @Override
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<SpaceEvent> findById(Long id) {
         return jpaRepository.findById(id).map(this::toDomain);
     }

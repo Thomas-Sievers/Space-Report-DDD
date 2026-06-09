@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface AlertRepository {
     Alert save(Alert alert);
+    Alert update(Alert alert);
+    void delete(Long id);
     Optional<Alert> findById(Long id);
     List<Alert> findByStatus(AlertStatus status);
     List<Alert> findAll();

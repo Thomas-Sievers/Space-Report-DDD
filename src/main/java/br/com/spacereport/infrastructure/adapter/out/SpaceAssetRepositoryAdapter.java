@@ -34,6 +34,16 @@ public class SpaceAssetRepositoryAdapter implements SpaceAssetRepository {
     }
 
     @Override
+    public SpaceAsset update(SpaceAsset spaceAsset) {
+        return toDomain(jpaRepository.save(toEntity(spaceAsset)));
+    }
+
+    @Override
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<SpaceAsset> findById(Long id) {
         return jpaRepository.findById(id).map(this::toDomain);
     }

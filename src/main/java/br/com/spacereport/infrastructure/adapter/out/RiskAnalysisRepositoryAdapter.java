@@ -33,6 +33,16 @@ public class RiskAnalysisRepositoryAdapter implements RiskAnalysisRepository {
     }
 
     @Override
+    public RiskAnalysis update(RiskAnalysis riskAnalysis) {
+        return toDomain(jpaRepository.save(toEntity(riskAnalysis)));
+    }
+
+    @Override
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<RiskAnalysis> findById(Long id) {
         return jpaRepository.findById(id).map(this::toDomain);
     }

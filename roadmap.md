@@ -16,7 +16,7 @@ Check each step off as it compiles and runs correctly.
 [x] Step 11 — Webhook notifier (HTTP POST JSON on CRITICAL alert — RF-005)
 [x] Step 12 — Unit tests for BR-001 critical alert logic (JUnit 5 + Mockito) ← ESSENTIAL
 [x] Step 13 — Inheritance: abstract DomainEntity base class; all 6 entities extend it (OOP — Herança)
-[ ] Step 14 — Complete CRUD: update() + delete() on all 5 port interfaces, adapters, and demo in runner
+[x] Step 14 — Complete CRUD: update() + delete() on all 5 port interfaces, adapters, and demo in runner
 ```
 
 ## How to run

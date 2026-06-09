@@ -26,6 +26,17 @@ public class OrganizationRepositoryAdapter implements OrganizationRepository {
     }
 
     @Override
+    public Organization update(Organization organization) {
+        OrganizationEntity entity = toEntity(organization);
+        return toDomain(jpaRepository.save(entity));
+    }
+
+    @Override
+    public void delete(Long id) {
+        jpaRepository.deleteById(id);
+    }
+
+    @Override
     public Optional<Organization> findById(Long id) {
         return jpaRepository.findById(id).map(this::toDomain);
     }

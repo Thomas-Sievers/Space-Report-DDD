@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface RiskAnalysisRepository {
     RiskAnalysis save(RiskAnalysis riskAnalysis);
+    RiskAnalysis update(RiskAnalysis riskAnalysis);
+    void delete(Long id);
     Optional<RiskAnalysis> findById(Long id);
     List<RiskAnalysis> findByAsset(SpaceAsset spaceAsset);
 }

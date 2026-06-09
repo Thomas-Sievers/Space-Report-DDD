@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface SpaceAssetRepository {
     SpaceAsset save(SpaceAsset spaceAsset);
+    SpaceAsset update(SpaceAsset spaceAsset);
+    void delete(Long id);
     Optional<SpaceAsset> findById(Long id);
     List<SpaceAsset> findByOrganization(Organization organization);
     List<SpaceAsset> findAll();

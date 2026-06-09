@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class SpaceReportRunner implements CommandLineRunner {
@@ -80,6 +79,8 @@ public class SpaceReportRunner implements CommandLineRunner {
             critical.forEach(a -> log.warn("  *** CRITICAL *** {}", a));
         }
 
+        demoCrud();
+
         log.info("=== Space Report — Demo Complete ===");
     }
 
@@ -103,5 +104,28 @@ public class SpaceReportRunner implements CommandLineRunner {
                         "LUNAR", "OPERATIONAL", org2));
 
         log.info("Seeded demo organizations and space assets.");
+    }
+
+    private void demoCrud() {
+        log.info("--- CRUD demo: update ---");
+        organizationRepository.findAll().stream()
+                .filter(o -> o.getName().equals("AetherLink"))
+                .findFirst()
+                .ifPresent(org -> {
+                    Organization updated = new Organization(
+                            org.getId(), org.getName(), org.getType(),
+                            "alerts@aetherlink.com", org.getCountry());
+                    organizationRepository.update(updated);
+                    log.info("  Updated AetherLink contact email to alerts@aetherlink.com");
+                });
+
+        log.info("--- CRUD demo: delete ---");
+        spaceAssetRepository.findAll().stream()
+                .filter(a -> a.getName().equals("AetherLink-GEO-01"))
+                .findFirst()
+                .ifPresent(asset -> {
+                    spaceAssetRepository.delete(asset.getId());
+                    log.info("  Deleted asset: {}", asset.getName());
+                });
     }
 }
